@@ -1,19 +1,12 @@
-//import
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import SearchBar from './components/my_component';
 
 const App = () => {
   return (
-    <div>hi</div>
+    <div><SearchBar /></div>
   );
 
 }
 
-//create html to render
-
 ReactDOM.render(<App />, document.getElementById('rootElement'));
-
-
-
-///place the html somewhere
