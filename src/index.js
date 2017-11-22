@@ -1,21 +1,40 @@
-import React from 'react';  //How we can use React
+import React, {Component} from 'react';  //How we can use React
 import ReactDOM from 'react-dom';
+import  YTSearch from 'youtube-api-search'
+
 import SearchBar from './components/search_bar';
 
 //youtube api key
 const API_KEY = 'AIzaSyANmYAtFZWVSvu2erxCcQDuijWQKnCAm3k'
 
-//Create a new compenent.  Idea hear is to produce html
-//New Component.  Code that produces html
+
+YTSearch({key: API_KEY, term: 'surfboards'}, function(data){
+  console.log(data);
+});
 
 
-const App = () => {   //Often called the fat arrow in Es6 it replace the function.  "this" behaves different
+class App extends Component {
+
+  constructor (props) {
+    super(props);
+    this.state = {videos: [] };
+
+  }
+
+
+  render()
+  {
     return (
         <div>
-            <SearchBar />
+          <SearchBar />
         </div>
+
     );
+  }
+
+
 }
+
 
 
 //Take this compents generated html and put it on the page (in the DOM)
