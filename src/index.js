@@ -19,24 +19,27 @@ class App extends Component {
         selectedVideo: null
     };
 
-    YTSearch({key: API_KEY, term: 'how the west was won'}, (videos) => {
-      this.setState(
-          {
-              videos:videos,
-              selectedVideo:videos[0]
-          }
-
-          );  //Again syntax short cut {videos:videos} Do this because the object name 'video' and the variable 'video is the same name.
-    });
+    this.videoSearch('How the West was won')
 
   }
 
+  videoSearch(term){
+      YTSearch({key: API_KEY, term: term}, (videos) => {
+          this.setState(
+              {
+                  videos:videos,
+                  selectedVideo:videos[0]
+              }
+
+          );  //Again syntax short cut {videos:videos} Do this because the object name 'video' and the variable 'video is the same name.
+      });
+  }
 
   render()
   {
     return (
         <div>
-          <SearchBar />
+          <SearchBar onSearchTermChange={term => this.videoSearch(term)} />
          <VideoDetail video={this.state.selectedVideo}/>
           <VideoList
               onVideoSelect={(selectedVideo) => this.setState({selectedVideo})}
