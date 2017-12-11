@@ -1,6 +1,7 @@
 module.exports = {
   entry: [
-    './src/index.js'
+    './src/index.js',
+      'webpack-dev-server/client?http://0.0.0.0:80'
   ],
   output: {
     path: __dirname,
@@ -20,6 +21,9 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   devServer: {
+    host:'0.0.0.0',
+    port:8080,
+    disableHostCheck: true, //security risk but lets it work with 0.0.0.0 so I can use remote
     historyApiFallback: true,
     contentBase: './'
   }
